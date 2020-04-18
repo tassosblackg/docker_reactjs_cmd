@@ -1,0 +1,23 @@
+Docker cheat sheat
+-------------------
+
+WORKDIR /usr/src/app
+
+*if dockerfile after COPY package.json
+add line-> RUN npm install
+
+--build
+ADD src /usr/src/app/src
+ADD public /usr/src/app/public
+
+RUN npm build
+----------------------------
+
+COPY FILES FROM CONTAINER 
+
+keep CONTAINER_ID and
+
+(sudo) docker cp CONTAINER_ID:/usr/src/app
+
+#create new image container and copy files from host into a working directory  
+docker run --rm -it -v /home/tassos/Desktop/dockReactJS/app:/usr/src/app -w /usr/src/app node bash
