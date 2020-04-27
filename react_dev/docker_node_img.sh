@@ -32,11 +32,14 @@ while [[ "$#" -gt 0 ]];
     esac;
     shift;
 done
+#
+# echo -e " \nimage name : ${i_name}"
+# echo -e "\n project name : $proj_path"
 
-echo -e " \nimage name : ${i_name}"
-echo -e "\n project name : $proj_path"
+v_path="$proj_path:c_path"
 
-# v_path="$proj_path:c_path"
+docker run -it -v ${v_path} -w ${c_path} ${i_name} /bin/bash
+
 #
 # if [ "$if_img" -eq 1 ]; then
 #
