@@ -1,5 +1,7 @@
 #!/bin/bash
 # set -xv
+# new_name is the name of new project_name
+# 
 bord=0
 
 get_container_id (){
