@@ -3,7 +3,7 @@
 
 # declare c_path,path_img variable
 c_path="/usr/src/app"
-img_name="reactjs:latest"
+img_name="node:latest"
 
 ####
 # docker run -it -v host_path:container_path -w container_path image_name path_image
@@ -36,7 +36,7 @@ done
 # echo -e " \nimage name : ${i_name}"
 # echo -e "\n project name : $proj_path"
 
-v_path="$proj_path:c_path"
+v_path="${proj_path}:${c_path}"
 
 docker run -it -v ${v_path} -w ${c_path} ${i_name} /bin/bash
 
