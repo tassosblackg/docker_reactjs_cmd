@@ -20,14 +20,14 @@ help_msg(){
 }
 # args=("$@")
 # v_path=${args[0]}":c_path"
-if_img=0
+help_flag=0
 # while loop to arg-parse
 while [[ "$#" -gt 0 ]];
     do case $1 in
       -i|--image_name) i_name="$2" if_img=1; shift;;
       -p|--project_name)  proj_path="$2";shift;;
        # *) echo "Unknown parameter passed: $1"; exit 1;;
-      -h|--help) help_msg exit 0;;
+      -h|--help) help_msg help_flag=1 exit 0;;
       *) echo -e "[ERROR]Non valid argument!\n ";;
     esac;
     shift;
@@ -36,10 +36,12 @@ done
 # echo -e " \nimage name : ${i_name}"
 # echo -e "\n project name : $proj_path"
 
-v_path="${proj_path}:${c_path}"
+if [ "$help_flag" -eq 1 ]; then
 
-docker run -it -v ${v_path} -w ${c_path} ${i_name} /bin/bash
+    v_path="${proj_path}:${c_path}"
 
+    docker run -it -v ${v_path} -w ${c_path} ${i_name} /bin/bash
+fi
 #
 # if [ "$if_img" -eq 1 ]; then
 #
