@@ -18,7 +18,7 @@ help_msg(){
     echo -e " see yaa!!"
 
 }
-flag=0
+
 # while loop to arg-parse
 while [[ "$#" -gt 0 ]];
     do case $1 in
