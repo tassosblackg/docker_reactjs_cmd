@@ -1,7 +1,7 @@
 #!/bin/bash
 # set -xv
 # new_name is the name of new project_name
-# 
+#
 bord=0
 
 get_container_id (){
@@ -28,7 +28,7 @@ done
 
 host_path="/home/tassos/reactjs_proj/"${new_name}
 workdir="/usr/src/app/new_pro/"
-img_name="reactjs:latest"
+img_name="node:latest"
 
 # create new project folder if not exists already
 if [ ! -d "$host_path" ]; then
