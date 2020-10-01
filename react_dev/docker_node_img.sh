@@ -4,7 +4,7 @@
 # declare c_path,path_img variable
 c_path="/usr/src/app"
 img_name="node:latest"
-
+h_port=3000
 ####
 # docker run -it -v host_path:container_path -w container_path image_name path_image
 ####
@@ -12,7 +12,8 @@ help_msg(){
     echo -e "reactdev [options] \"string_name\" \n"
     echo -e "--[options]--"
     echo -e "Use -i or --image_name to pass an image name to be used. \n"
-    echo -e "Use -p or --project_name to pass the new project's name. \n"
+    echo -e "Use -hp or --host_port to pass a port number to container's host. \n"
+    echo -e "Use -d or --project_name to pass the new project's path folder. \n"
     echo -e "Use -h or --help to ask for help on reactdev. \n"
     echo -e "reactdev custom command using docker_node_img script [**author:tassosblackg**]\n"
     echo -e " see yaa!!"
@@ -22,20 +23,24 @@ help_msg(){
 # while loop to arg-parse
 while [[ "$#" -gt 0 ]];
     do case $1 in
-      -i|--image_name)
-         i_name="$2";
-         shift
-        ;;
-      -p|--project_name)
-         proj_path="$2";
-         shift
-        ;;
-      -h|--help)
-          help_msg
-          exit 0
-          ;;
-      *)
-         echo -e "[ERROR]Non valid argument!\n ";;
+        -i|--image_name)
+            i_name="$2";
+            shift
+            ;;
+        -hp|--host_port)
+            h_port="$2";
+            shift
+            ;;
+        -d|--project_name)
+            proj_path="$2";
+            shift
+            ;;
+        -h|--help)
+            help_msg
+            exit 0
+            ;;
+        *)
+            echo -e "[ERROR]Non valid argument!\n ";;
     esac;
     shift;
 done
@@ -44,7 +49,7 @@ done
 # echo -e "\n project name : $proj_path"
 v_path="${proj_path}:${c_path}"
 
-docker run -it -p 3000:3000 -v ${v_path} -w ${c_path} ${i_name} /bin/bash
+docker run -it -p ${h_port}:3000 -v ${v_path} -w ${c_path} ${i_name} /bin/bash
 
 #
 # if [ "$if_img" -eq 1 ]; then
